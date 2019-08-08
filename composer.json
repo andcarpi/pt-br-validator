@@ -13,7 +13,7 @@
     },
     "autoload": {
         "psr-4": {
-            "andcarpi\\pt-br-validator\\": "src/pt-br-validator"
+            "andcarpi\\PtBrValidator\\": "src/pt-br-validator"
         }
     },
     "minimum-stability": "stable",
@@ -24,7 +24,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "andcarpi\\pt-br-validator\\ValidatorProvider"
+                "andcarpi\\PtBrValidator\\ValidatorProvider"
             ]
         }
     }

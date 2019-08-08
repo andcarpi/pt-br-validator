@@ -1,6 +1,6 @@
 <?php
 
-use LaravelLegends\PtBrValidator\Validator;
+use andcarpi\PtBrValidator\Validator;
 
 class TestValidator extends Orchestra\Testbench\TestCase
 {
