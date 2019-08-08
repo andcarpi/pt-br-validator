@@ -231,22 +231,61 @@ class Validator extends BaseValidator
      * @return boolean
      */
 
-    public function validatePlacaDeVeiculo($attribute, $value)
+    public function validatePlacaDeVeiculoComum($attribute, $value)
     {
-        //PLACA COMUM ABC-1234
-        if (preg_match('/^[a-zA-Z]{3}\-?[0-9]{4}$/', $value)) {
-            return true;
-        }
-        //PLACA MERCOSUL ABC1D23
-        if (preg_match('[A-Z]{3}[0-9][A-Z][0-9]{2}', $value)) {
-           return true;
-        }
 
-        return false;
+        //PLACA COMUM ABC-1234
+        return preg_match('/^[a-zA-Z]{3}\-?[0-9]{4}$/', $value);
+
     }
 
-//    public function validateRenavam($attribute, $value)
-//    {
-//
-//    }
+    public function validatePlacaDeVeiculoMercosul($attribute, $value)
+    {
+
+        //PLACA MERCOSUL ABC1D23
+        return preg_match('[A-Z]{3}[0-9][A-Z][0-9]{2}', $value);
+
+    }
+
+
+    public function validatePlacaDeVeiculo($attribute, $value)
+    {
+
+        return $this->validatePlacaDeVeiculoComum($attribute, $value) or $this->validatePlacaDeVeiculoMercosul($attribute, $value);
+
+    }
+
+    public function validateRenavam($attribute, $value)
+    {
+        $value = preg_replace("/[^0-9]/", '', $value);
+        if (!in_array(strlen($value),[9,11])) {
+            $this->msg = 'O :attribute precisa ter 9 ou 11 dígitos.';
+            return false;
+        } else {
+            $value = str_pad($value, 11, '0', STR_PAD_LEFT);
+            $renavamSemDigito = substr($value, 0, 10);
+            $renavamReversoSemDigito = strrev($renavamSemDigito);
+            $soma = 0;
+            $multiplicador = 2;
+            for ($i = 0; $i < 10; $i++) {
+                $algarismo = substr($renavamReversoSemDigito, $i, 1);
+                $soma += $algarismo * $multiplicador;
+                if ($multiplicador >= 9) {
+                    $multiplicador = 2;
+                } else {
+                    $multiplicador++;
+                }
+            }
+            $mod11 = $soma % 11;
+            $ultimoDigitoCalculado = 11 - $mod11;
+            $ultimoDigitoCalculado = ($ultimoDigitoCalculado >= 10 ? 0 : $ultimoDigitoCalculado);
+            $digitoRealInformado = substr($value, -1);
+            if ($ultimoDigitoCalculado != $digitoRealInformado) {
+                $this->msg = 'Renavam inválido';
+                return false;
+            }
+        }
+        return true;
+
+    }
 }
