@@ -7,7 +7,7 @@ class TestValidator extends Orchestra\Testbench\TestCase
 
     protected function getPackageProviders($app)
     {
-        return ['LaravelLegends\PtBrValidator\ValidatorProvider'];
+        return ['andcarpi\PtBrValidator\ValidatorProvider'];
     }
     
     public function testTelefoneComDdd()

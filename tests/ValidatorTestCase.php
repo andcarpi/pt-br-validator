@@ -6,6 +6,6 @@ abstract class ValidatorTestCase extends Orchestra\Testbench\TestCase
 	{
 		parent::setUp();
 
-		$this->app->register(\LaravelLegends\PtBrValidator\ValidatorProvider::class);
+		$this->app->register(\andcarpi\PtBrValidator\ValidatorProvider::class);
 	}
 }
