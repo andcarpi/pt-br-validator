@@ -24,7 +24,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "andcarpi\\PtBrValidator\\ValidatorProvider"
+                "andcarpi\\pt-br-validator\\ValidatorProvider"
             ]
         }
     }
