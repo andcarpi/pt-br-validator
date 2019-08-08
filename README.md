@@ -20,7 +20,7 @@ Esta é uma biblioteca com algumas validações brasileiras.
     andcarpi\PtBrValidator\ValidatorProvider::class,
     ```
 
-###Utilização
+### Utilização
 
 Agora, para utilizar a validação, basta fazer o procedimento padrão do `Laravel`.
 
