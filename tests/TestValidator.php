@@ -276,7 +276,9 @@ class TestValidator extends Orchestra\Testbench\TestCase
             'abc-1234',
             'ABC1234',
             'aBc1234', 
-            'abc1234'
+            'abc1234',
+            'ABC1D23',
+            'ABc4g47'
         ];
 
         foreach ($placasValidas as $placa) {

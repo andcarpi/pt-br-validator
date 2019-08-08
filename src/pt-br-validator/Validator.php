@@ -210,8 +210,6 @@ class Validator extends BaseValidator
         return preg_match($regex, $value) > 0;
     }
 
-
-
     /**
      * Valida se o formato de CEP está correto
      *
@@ -233,9 +231,22 @@ class Validator extends BaseValidator
      * @return boolean
      */
 
-    public function validateFormatoPlacaDeVeiculo($attribute, $value)
+    public function validatePlacaDeVeiculo($attribute, $value)
     {
-        return preg_match('/^[a-zA-Z]{3}\-?[0-9]{4}$/', $value) > 0;
+        //PLACA COMUM ABC-1234
+        if (preg_match('/^[a-zA-Z]{3}\-?[0-9]{4}$/', $value)) {
+            return true;
+        }
+        //PLACA MERCOSUL ABC1D23
+        if (preg_match('[A-Z]{3}[0-9][A-Z][0-9]{2}', $value)) {
+           return true;
+        }
+
+        return false;
     }
 
+//    public function validateRenavam($attribute, $value)
+//    {
+//
+//    }
 }
