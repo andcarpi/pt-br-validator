@@ -1,6 +1,6 @@
 {
     "name": "andcarpi/pt-br-validator",
-    "description": "Uma biblioteca contendo validações de formatos Brasileiros, para o Laravel 5",
+    "description": "Uma biblioteca contendo validações de formatos Brasileiros, para o Laravel 5.*",
     "license": "MIT",
     "authors": [
         {
@@ -18,8 +18,8 @@
     },
     "minimum-stability": "stable",
     "require-dev": {
-        "orchestral/testbench": "^3.1.*",
-        "phpunit/phpunit": "^4.8.*"
+        "orchestra/testbench": "3.1.*",
+        "phpunit/phpunit": "4.8.*"
     },
     "extra": {
         "laravel": {
